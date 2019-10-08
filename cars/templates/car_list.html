@@ -12,6 +12,7 @@
 </ul>
 {% endif %}
 
+
 <div class="row">
 	{% for car in cars %}
 
@@ -21,7 +22,7 @@
           <div class="card-body">
             <h5 class="card-title">{{car.make}} - {{car.model}}</h5>
             {% if car.img %}
-              <img src="{{ car.img.url }}" alt="">
+              <img class="card-img-top" src="{{ car.img.url }}" alt="">
             {% endif %}
             <p class="card-text">{{car.year}}</p>
           </div>
@@ -45,4 +46,5 @@
 	-->
 	{% endfor %}
 </div>
+
 {% endblock content %}
