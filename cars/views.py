@@ -2,9 +2,19 @@ from django.shortcuts import render, redirect
 from .models import Car
 from .forms import CarForm
 from django.contrib import messages
+from django.db.models import Q
 
 def car_list(request):
     cars = Car.objects.all()
+    query = request.GET.get("q")
+
+    if query:
+    	cars = cars.filter(
+    		Q(make__icontains=query)|
+    		Q(model__icontains=query)|
+    		Q(year__icontains=query)
+    		).distinct()
+
     context = {
         "cars": cars,
     }
